@@ -1,0 +1,2 @@
+# CleaningAllocationChart
+清掃割り振り表を作成する
