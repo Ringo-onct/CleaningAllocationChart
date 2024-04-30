@@ -1,0 +1,9 @@
+この階層で割り振り票.pyを実行してください
+また，この階層の.pyファイルを参照しているのでこの階層のファイルは削除しないでください
+
+baseファイルのSheet2，Sheet3を初期値に戻したい場合はallSetZero.pyの最下部にインデントなしで
+
+zero_out_numbers("base.xlsx", "Sheet2")
+zero_out_numbers("base.xlsx", "Sheet3")
+
+を追加してallSetZero.pyを実行してください
