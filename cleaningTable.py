@@ -1,21 +1,13 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Aug 22 19:22:08 2023
-
-@author: eiru_
-"""
-
 from openpyxl import load_workbook
 import allSetZero
 import random
 import cellCopy
 import datetime
 
-
 def  gain_job(file_path, sheet_name):
     wb = load_workbook(filename=file_path)
     ws = wb[sheet_name]
-    
+
     job_array = []
     job_dict = {}
     for i, row in enumerate(ws.iter_cols(values_only=False)):
@@ -24,7 +16,7 @@ def  gain_job(file_path, sheet_name):
         for j, cell_value in enumerate(row):
             if j < 2 or j > 49:
                 continue
-            
+
             if i == 0:
                 job_array.append(cell_value.value)
                 # 変更後の値をセルに書き込む
@@ -55,16 +47,16 @@ def set_job(job_dict, chain_count):
         #print(len(e))
         #print(job_counter)
         e = shafle(e,e[job_counter-1][1])
-        
+
         for i, j in enumerate(e):
             if i < len(job_array):
                 set_dict.setdefault(floor,{})[j[0]] = job_array[i]
             else:
                 set_dict.setdefault(floor,{})[j[0]] = "自室清掃"
-        
+
    # print(set_dict)
     return set_dict
-        
+
 def write_job(file_path, set_dict):
     wb = load_workbook(filename=file_path)
     ws = wb.active
@@ -98,7 +90,7 @@ def shafle(List,number):
     e = len(List)-e
     h_list = f_list+random.sample(List[f:e], len(List[f:e]))+e_list
     return h_list
-    
+
 
 
 
@@ -111,7 +103,5 @@ def al(file_path, sheet_name_1, sheet_name_2):
     c = allSetZero.count_of_numbers(file_path, sheet_name_2)
     set_dict = set_job(job_dict, c)
     write_job(destination_file_path, set_dict)
-    
+
     return set_dict
-    
-    
